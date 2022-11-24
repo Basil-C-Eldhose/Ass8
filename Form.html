@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <script>
+        function validateForm() {
+            id = document.getElementById("txtid").value;
+            pass = document.getElementById("txtpass").value;
+            name = document.getElementById("txtname").value;
+            address = document.getElementById("txtadd").value;
+            country = document.getElementById("txtCou").value;
+            zipcode = document.getElementById("txtzip").value;
+            email = document.getElementById("txtemail").value;
+            sex = document.getElementById("txtsex").value;
+            var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-za-z]{2,4})$/;
+
+
+            //divid = document.getElementById("idError");
+
+            if (id == "") {
+                idError.innerHTML = "* Id is Mandatory";
+                document.getElementById("txtid").focus();
+                return false;
+            }
+            if (pass == "") {
+                passError.innerHTML = "* Password is Mandatory";
+                document.getElementById("txtpass").focus();
+                return false;
+            }
+            if (name == "") {
+                nameError.innerHTML = "* name is Mandatory";
+                document.getElementById("txtname").focus();
+                return false;
+            }
+            if (!name.match(/^[a-zA-Z\s]+$/)) {
+                nameError.innerHTML = "Alphabets only";
+                document.getElementById("txtname").focus();
+                return false;
+            }
+            if (address == "") {
+                addressError.innerHTML = "* Address is Mandatory";
+                document.getElementById("txtadd").focus();
+                return false;
+            }
+            if (country == "") {
+                countError.innerHTML = "* Country is Mandatory";
+               // document.getElementById("txtCou").focus();
+            }
+            if (zipcode == "") {
+                zipError.innerHTML = "* Zip Code is Mandatory";
+                document.getElementById("txtzip").focus();
+                return false;
+            }
+            if (email == "") {
+                emailError.innerHTML = "* Email is Mandatory";
+                document.getElementById("txtemail").focus();
+                return false;
+            }
+            if (reg.test(email) == false) {
+                emailError.innerHTML = "Enter Valid Mail";
+                document.getElementById("txtemail").focus();
+                return false;
+            }
+           
+        }
+    </script>
+    <form>
+        <br />
+        <br />
+        <table align="center" border="1">
+            <tr><td colspan="2"><h2>Registation Form</h2></td></tr>
+            <tr>
+                <td>User Id :</td>
+                <td><input type="text" id="txtid" /></td>
+                <td><div class="error" id="idError"></div></td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td><input type="text" id="txtpass" /></td>
+                <td><div class="error" id="passError"></div></td>
+            </tr>
+            <tr>
+                <td>Name :</td>
+                <td><input type="text" id="txtname" /></td>
+                <td><div class="error" id="nameError"></div></td>
+            </tr>
+            <tr>
+                <td>Adderss :</td>
+                <td><input type="text" id="txtadd" /></td>
+                <td><div class="error" id="addressError"></div></td>
+            </tr>
+            <tr>
+                <td>Country :</td>
+                <td>
+                    <select id="txtCou">
+                        <option value="India">India</option>
+                        <option value="srilanka">Srilanka</option>
+                        <option value="bhutan">Bhutan</option>
+                        <option value="china">China</option>
+                    </select>
+                </td>
+                <td><div class="error" id="countError"></div></td>
+            </tr>
+            <tr>
+                <td>Zip Code :</td>
+                <td><input type="text" id="txtzip" /></td>
+                <td><div class="error" id="zipError"></div></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td><input type="text" id="txtemail" /></td>
+                <td><div class="error" id="emailError"></div></td>
+            </tr>
+            <tr>
+                <td>Sex :</td>
+                <td>
+                    <input type="radio" id="txtsex" name="male" />Male
+                    <input type="radio" id="txtsex" name="female" />Female
+                </td>
+                <td><div class="error" id="genderError"></div></td>
+            </tr>
+            <tr>
+                <td>Language :</td>
+                <td>
+                    <input type="checkbox" id="english" name="english" value="english" />English
+                    <input type="checkbox" id="nonenglish" name="nonenglish" value="nonenglish" />Non English
+                </td>
+                <td><div class="error" id="langError"></div></td>
+            </tr>
+            <tr>
+                <td>About :</td>
+                <td>
+                    <textarea id="aboutid" name="about" rows="6" cols="20"></textarea>
+                </td>
+                <td><div class="error" id="aboutError"></div></td>
+            </tr>
+
+
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <!--<button class="btn btn-primary" type="submit" onclick="validateForm()">Submit</button>-->
+                <input type="button" value="submit" onclick="validateForm()" />
+                </td>
+
+            </tr>
+
+
+        </table>
+        
+    </form>
+</body>
+</html>
